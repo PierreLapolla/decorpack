@@ -1,7 +1,6 @@
 # Decorpack
 
 [![PyPI](https://img.shields.io/pypi/v/decorpack)](https://pypi.org/project/decorpack/)  
-[![CI](https://github.com/PierreLapolla/decorpack/actions/workflows/publish.yml/badge.svg)](https://github.com/your‑org/decorpack/actions)
 
 A small collection of reusable Python decorators and utilities for logging, timing, singletons, and safe‑exception handling.
 
@@ -21,25 +20,30 @@ A small collection of reusable Python decorators and utilities for logging, timi
 ## Quickstart
 
 ```python
-from decorpack import timer, singleton, log, try_except
+from decorpack.logger import log
 
+log.info("Quickstart over!")
+```
+```python
+from decorpack.timer import timer
 
 @timer
 def expensive_computation(x):
     pass
-
+```
+```python
+from decorpack.singleton import singleton
 
 @singleton
 class MyConfig:
     pass
-
+```
+```python
+from decorpack.try_except import try_except
 
 @try_except(ValueError)
 def parse_int(s: str) -> int:
     return int(s)
-
-
-log.info("Quickstart over!")
 ```
 
 ## License
