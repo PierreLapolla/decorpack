@@ -1,7 +1,7 @@
 import logging
 from typing import Callable, Any, Optional, TypeVar, Union, Tuple, Type
 
-from utils.logger import log, LOG_LEVEL
+from decorpack.logger import log, LOG_LEVEL
 
 
 def try_except(

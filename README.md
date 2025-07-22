@@ -1,64 +1,45 @@
-# Python App Template
+# Decorpack
 
-This project provide a template for Python projects, including a basic structure and configuration files to help you get started quickly.
-It aims to enforce best practices and provide a consistent development experience.
+[![PyPI](https://img.shields.io/pypi/v/decorpack)](https://pypi.org/project/decorpack/)  
+[![CI](https://github.com/PierreLapolla/decorpack/actions/workflows/publish.yml/badge.svg)](https://github.com/your‑org/decorpack/actions)
+
+A small collection of reusable Python decorators and utilities for logging, timing, singletons, and safe‑exception handling.
+
+## Features
+ 
+- `logger`: pre-configured Python logger ready to use 
+- `singleton`: decorator  and metaclass for enforcing single-instance class
+- `timer`: decorator to measure function runtime 
+- `try_except`: decorator for catching & handling exceptions cleanly
 
 ## Installation
 
-### Requirements
-
-- [UV](https://docs.astral.sh/uv/) package manager
-
-### Clone the repository
-
 ```bash
-  git clone https://github.com/PierreLapolla/python_template.git
-  cd python_template
+  pip install decorpack
 ```
 
-## Running the project
+## Quickstart
 
-To run the project locally, run the following command:
+```python
+from decorpack import timer, singleton, log, try_except
 
-```bash
-  uv run -m src.app
-```
 
-## Docker Support
+@timer
+def expensive_computation(x):
+    pass
 
-You can also run the application in a Docker container:
 
-```bash
-  docker build -t python-app .
-  docker run -it python-app
-```
+@singleton
+class MyConfig:
+    pass
 
-## Tests, type checks, linting and formatting - AUTOMATED
 
-These steps are automatically handled by [pre-commit](https://pre-commit.com/) hooks defined
-in [.pre-commit-config.yaml](.pre-commit-config.yaml).
-Additionally, you can run them manually with the following commands:
+@try_except(ValueError)
+def parse_int(s: str) -> int:
+    return int(s)
 
-```bash
-  uv run pytest
-```
 
-```bash
-  uvx ty check
-```
-
-```bash
-  uvx ruff check . --fix
-```
-
-```bash
-  uvx ruff format .
-```
-
-Or you can run all of them at once using pre-commit::
-
-```bash
-  uv run pre-commit run --all-files
+log.info("Quickstart over!")
 ```
 
 ## License

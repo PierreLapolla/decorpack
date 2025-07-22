@@ -1,6 +1,6 @@
 from time import perf_counter, sleep
 
-from utils.logger import log
+from decorpack.logger import log
 
 
 def timer(func: callable) -> callable:

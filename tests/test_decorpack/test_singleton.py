@@ -1,4 +1,4 @@
-from utils.singleton import singleton, SingletonMeta
+from decorpack.singleton import singleton, SingletonMeta
 
 
 def test_singleton_decorator():
