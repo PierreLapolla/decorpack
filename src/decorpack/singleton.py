@@ -4,6 +4,7 @@ from functools import wraps
 def singleton(cls):
     """
     Decorator to implement the singleton pattern.
+    Warning: This decorator is not thread-safe.
 
     :param cls: The class to be decorated.
     :type cls: type
@@ -31,6 +32,7 @@ def singleton(cls):
 class SingletonMeta(type):
     """
     Metaclass implementing the singleton pattern.
+    Warning: This decorator is not thread-safe.
     """
 
     _instances = {}
@@ -46,18 +48,3 @@ class SingletonMeta(type):
         if cls not in cls._instances:
             cls._instances[cls] = super().__call__(*args, **kwargs)
         return cls._instances[cls]
-
-
-if __name__ == "__main__":
-    """
-    Example usage of the singleton pattern.
-    """
-
-    @singleton
-    class ExempleClassDecorator:
-        def __init__(self, value):
-            self.value = value
-
-    class ExempleClassMetaclass(metaclass=SingletonMeta):
-        def __init__(self, value):
-            self.value = value

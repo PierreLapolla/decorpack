@@ -1,4 +1,5 @@
-from time import perf_counter, sleep
+from time import perf_counter
+from functools import wraps
 
 from decorpack.logger import log
 
@@ -10,6 +11,7 @@ def timer(func: callable) -> callable:
     :return: wrapper function that measures the execution time of the function
     """
 
+    @wraps(func)
     def wrapper(*args, **kwargs):
         start = perf_counter()
         result = func(*args, **kwargs)
@@ -18,15 +20,3 @@ def timer(func: callable) -> callable:
         return result
 
     return wrapper
-
-
-if __name__ == "__main__":
-    """
-    Example usage of the timer decorator.
-    """
-
-    @timer
-    def example_function():
-        sleep(1)
-
-    example_function()
